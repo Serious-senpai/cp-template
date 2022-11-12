@@ -24,6 +24,13 @@ ostream &operator<<(ostream &out, const vector<T> &_v)
     return out;
 }
 
+template <typename T1, typename T2>
+ostream &operator<<(ostream &out, const pair<T1, T2> &_p)
+{
+    out << "<" << _p.first << ", " << _p.second << ">";
+    return out;
+}
+
 int solve()
 {
 }
