@@ -31,6 +31,18 @@ ostream &operator<<(ostream &out, const pair<T1, T2> &_p)
     return out;
 }
 
+template <typename T>
+T min(T &_x, T &_y, T &_z)
+{
+    return min(_x, min(_y, _z));
+}
+
+template <typename T>
+T max(T &_x, T &_y, T &_z)
+{
+    return max(_x, max(_y, _z));
+}
+
 void solve()
 {
 }
