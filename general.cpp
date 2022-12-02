@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 #define int long long
 #define INF LLONG_MAX
