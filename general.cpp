@@ -6,49 +6,90 @@
 
 using namespace std;
 
-template <typename T>
-ostream &operator<<(ostream &out, const vector<T> &_v)
-{
-    int n = _v.size();
-    out << "[";
-    for (int i = 0; i < n; i++)
-    {
-        out << _v[i];
-        if (i < n - 1)
-        {
-            out << ", ";
-        }
-    }
-    out << "]";
+#ifndef ONLINE_JUDGE // Collapse this
 
-    return out;
+void pipe(const char *file_name)
+{
+    cout << "Reading from " << file_name << endl;
+    freopen(file_name, "r", stdin);
 }
 
 template <typename T>
-ostream &operator<<(ostream &out, const set<T> &_s)
+void list_elements(ostream &stream, const vector<T> &_v)
 {
-    vector<int> _v(_s.begin(), _s.end());
     int n = _v.size();
-    out << "{";
     for (int i = 0; i < n; i++)
     {
-        out << _v[i];
+        stream << _v[i];
         if (i < n - 1)
         {
-            out << ", ";
+            stream << ", ";
         }
     }
-    out << "}";
+}
 
-    return out;
+template <typename T>
+ostream &operator<<(ostream &stream, const vector<T> &_v)
+{
+    stream << "[";
+    list_elements(stream, _v);
+    stream << "]";
+
+    return stream;
+}
+
+template <typename T>
+ostream &operator<<(ostream &stream, const set<T> &_s)
+{
+    vector<T> _v(_s.begin(), _s.end());
+
+    stream << "{";
+    list_elements(stream, _v);
+    stream << "}";
+
+    return stream;
+}
+
+template <typename T>
+ostream &operator<<(ostream &stream, const multiset<T> &_s)
+{
+    vector<T> _v(_s.begin(), _s.end());
+
+    stream << "{";
+    list_elements(stream, _v);
+    stream << "}";
+
+    return stream;
 }
 
 template <typename T1, typename T2>
-ostream &operator<<(ostream &out, const pair<T1, T2> &_p)
+ostream &operator<<(ostream &stream, const map<T1, T2> &_m)
 {
-    out << "<" << _p.first << ", " << _p.second << ">";
-    return out;
+    vector<pair<T1, T2>> _v(_m.begin(), _m.end());
+
+    stream << "{";
+    int n = _v.size();
+    for (int i = 0; i < n; i++)
+    {
+        stream << _v[i].first << ": " << _v[i].second;
+        if (i < n - 1)
+        {
+            stream << ", ";
+        }
+    }
+    stream << "}";
+
+    return stream;
 }
+
+template <typename T1, typename T2>
+ostream &operator<<(ostream &stream, const pair<T1, T2> &_p)
+{
+    stream << "<" << _p.first << ", " << _p.second << ">";
+    return stream;
+}
+
+#endif
 
 template <typename T>
 const T &min(const T &_x, const T &_y, const T &_z)
@@ -63,9 +104,8 @@ signed main()
     cout.tie(NULL);
 
 #ifndef ONLINE_JUDGE
-    cout << "Reading from input.txt" << endl;
-    freopen("input.txt", "r", stdin);
+    pipe("input.txt");
 #endif
 
-    // Code begins here
+    // Code goes here
 }
