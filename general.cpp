@@ -38,8 +38,8 @@ ostream &operator<<(ostream &stream, const vector<T> &_v)
     return stream;
 }
 
-template <typename T>
-ostream &operator<<(ostream &stream, const set<T> &_s)
+template <typename T, typename Compare, typename Alloc>
+ostream &operator<<(ostream &stream, const set<T, Compare, Alloc> &_s)
 {
     vector<T> _v(_s.begin(), _s.end());
 
@@ -50,8 +50,8 @@ ostream &operator<<(ostream &stream, const set<T> &_s)
     return stream;
 }
 
-template <typename T>
-ostream &operator<<(ostream &stream, const multiset<T> &_s)
+template <typename T, typename Compare, typename Alloc>
+ostream &operator<<(ostream &stream, const multiset<T, Compare, Alloc> &_s)
 {
     vector<T> _v(_s.begin(), _s.end());
 
@@ -62,8 +62,8 @@ ostream &operator<<(ostream &stream, const multiset<T> &_s)
     return stream;
 }
 
-template <typename T1, typename T2>
-ostream &operator<<(ostream &stream, const map<T1, T2> &_m)
+template <typename T1, typename T2, typename Compare, typename Alloc>
+ostream &operator<<(ostream &stream, const map<T1, T2, Compare, Alloc> &_m)
 {
     vector<pair<T1, T2>> _v(_m.begin(), _m.end());
 
