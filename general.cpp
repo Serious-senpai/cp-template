@@ -1,3 +1,4 @@
+#pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h>
 
 #define int long long
